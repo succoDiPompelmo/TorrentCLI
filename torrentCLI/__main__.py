@@ -1,17 +1,17 @@
-from inquiry import make_inquiry
+from torrentCLI.inquiry import make_inquiry
 
-import torrent
+import torrentCLI.torrent as torrent
 import logging
 
-from rtorrent import add_torrent
-from log_module import init_logger
-from printer import display_results
-from parser import parse_results_command
+from torrentCLI.rtorrent import add_torrent
+from torrentCLI.log_module import init_logger
+from torrentCLI.printer import display_results
+from torrentCLI.parser import parse_results_command
 
 import configparser
 
 config = configparser.ConfigParser()
-config.read('settings.ini')
+config.read('./torrentCLI/settings.ini')
 
 init_logger(config)
 logger = logging.getLogger(__name__)
@@ -53,9 +53,6 @@ def torrent_cli():
         if code == 'h':
             print('Options:',
                 '[s<links>]: Display magnets to terminal',
-                '[c<links>]: Copy magnets to clipboard',
-                '[t<links>]: Save .torrent files',
-                '[d<links>]: Get descriptions',
                 '[r<links>]: Launch download from rtorrent',
                 '[q] Quit', sep='\n')
         if code == 's':

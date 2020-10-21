@@ -1,4 +1,4 @@
-import rtorrent_client
+import torrentCLI.rtorrent_client
 
 def add_torrent(magnet):
 

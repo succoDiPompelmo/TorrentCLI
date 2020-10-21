@@ -70,7 +70,7 @@ class Snowfl():
             "0/NONE/NONE/1?_=1602628388020"
             )
 
-        self.logger.debug(f"{results.json()}")
+        # self.logger.debug(f"{results.json()}")
         return results.json()
 
     def get_results(self, name, count=10):

@@ -33,7 +33,7 @@ class Tpb():
             "1/99/0"
             )
 
-        self.logger.debug(results.text)
+        # self.logger.debug(results.text)
         return results.text
 
     def _get_key_name(self, div):

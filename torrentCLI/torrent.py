@@ -1,4 +1,4 @@
-from utility import my_import
+from torrentCLI.utility import my_import
 
 # search_engine is not a good name, doesn't imply the fact that is a string, hard to comprehend
 # Move to dictionary and remove pandas, add parsing function for the results
