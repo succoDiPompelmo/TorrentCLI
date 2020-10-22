@@ -9,11 +9,14 @@ from torrentCLI.printer import display_results
 from torrentCLI.parser import parse_results_command
 
 import configparser
+import pathlib
+
+package_path = pathlib.Path(__file__).parent.absolute()
 
 config = configparser.ConfigParser()
-config.read('./torrentCLI/settings.ini')
+config.read(str(package_path) + '/settings.ini')
 
-init_logger(config)
+init_logger(config, package_path)
 logger = logging.getLogger(__name__)
 
 # TODO: Handle multipage search
@@ -29,7 +32,7 @@ logger = logging.getLogger(__name__)
 def torrent_cli():
 
     search_engines, name, count = make_inquiry()
-    logger.debug(f"SEARCH ENGINE: {search_engines}, NAME: {name},COUNT: {count}")
+    logger.info(f"SEARCH ENGINE: {search_engines}, NAME: {name},COUNT: {count}")
     torrents_data = torrent.search(search_engines, name)
 
     if len(torrents_data) == 0:
