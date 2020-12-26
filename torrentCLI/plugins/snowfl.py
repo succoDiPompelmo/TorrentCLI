@@ -37,8 +37,8 @@ class Snowfl():
             url_base64 +
             "?_=1602628388020"
             )
-        
-        time.sleep(1)
+        # Basic rate limiting implementation 1 request per second.
+        # time.sleep(1)
         
         if results.status_code == 503:
             return None
@@ -69,8 +69,9 @@ class Snowfl():
             self.get_rng_token() + "/" +
             "0/NONE/NONE/1?_=1602628388020"
             )
+        results.encoding = 'utf-8'
 
-        # self.logger.debug(f"{results.json()}")
+        self.logger.debug(f"{results.text}")
         return results.json()
 
     def get_results(self, name, count=10):

@@ -1,5 +1,8 @@
 from PyInquirer import style_from_dict, Token, prompt, Separator
 
+import logging
+logger = logging.getLogger(__name__)
+
 style = style_from_dict({
     Token.Separator: '#cc5454',
     Token.QuestionMark: '#673ab7 bold',
@@ -44,4 +47,11 @@ questions = [
 
 def make_inquiry():
     answer = prompt(questions, style=style)
-    return answer['search_engine'], answer['search_text'], int(answer['search_count'])
+    try:
+        search_engine = answer['search_engine']
+        search_text = answer['search_text']
+        search_count = int(answer['search_count'])
+    except KeyError as e:
+        logger.error(f"The given answers were {answer}")
+        exit(1)
+    return search_engine, search_text, search_count

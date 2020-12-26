@@ -9,6 +9,6 @@ def init_logger(config, package_path):
     logger = logging.getLogger()
     logger.setLevel(config['APP']['LOG_LEVEL'])
 
-    rotating_log_handler = RotatingFileHandler(str(package_path) + '/log/log.out', maxBytes=10000, backupCount=5)
+    rotating_log_handler = RotatingFileHandler(str(package_path) + '/log/log.out', maxBytes=1000000, backupCount=1)
 
     logger.addHandler(rotating_log_handler)
